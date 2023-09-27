@@ -2,10 +2,10 @@ import React from "react";
 
 function Location(props){
     const location = props.location;
-    console.log(location)
+    // console.log(location)
     return(
         <div className="location">
-            <p>{location.name}</p>
+            <p>{location && location.name}</p>
         </div>
     )
 }

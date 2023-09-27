@@ -2,22 +2,35 @@ import React, { useEffect, useRef, useState } from "react";
 import Day from "./Day";
 import Temp from "./Temp";
 import Location from "./Location";
+
+// section for desktiop view
+import Date from "./desktop/Date";
+import Hourly from "./desktop/Hourly";
+import Chart from "./desktop/Chart";
+import Forecast from "./desktop/Forecast";
+
+//pictures
 import DailySummary from "./DailySummary";
 import WeatherSpecifics from "./WeatherSpecifics";
 
 import '../css/Main.css';
 import axios from "axios";
 
+
 function Main(){
     const[isLoading,setIsLoading] = useState(true);
     const[location, setLocation] = useState();
-    const [data, setData] = useState(true);
+    const [data, setData] = useState(false);
     const [forecast, setForecast] = useState({});
     const[forecastHour, setForecastHour] = useState();
     const [specifics, setSpecifics] = useState({});
     const[temp, setTemp] = useState("");
     const initialized = useRef(false);
     const [condition, setCondition] = useState();
+    const[date, setDate] = useState()
+    const[current, setCurrent] = useState();
+
+
     const [longitude, setLongitude] = useState("")
     const [latitude, setLatitude] = useState("")
 
@@ -36,10 +49,11 @@ function Main(){
 
         const getRequest = async ()=> {
             
-            await axios.get("http://api.weatherapi.com/v1/forecast.json?key=84487a92cee24d95bff41045232309 &q=33.1334561,-96.6466561&days=5&aqi=no&alerts=no").then(res => {
+            await axios.get("http://api.weatherapi.com/v1/forecast.json?key=84487a92cee24d95bff41045232309 &q=33.1334561,-96.6466561&days=10&aqi=no&alerts=no").then(res => {
                     
                     setIsLoading(false);
                     const weatherDetails = res.data.current;
+                    setCurrent(res.data.current);
                     setLocation(res.data.location)
                     setData(res);
                     //set temp value
@@ -49,6 +63,7 @@ function Main(){
                     setCondition(res.data.current.condition.text)
                     setForecast(res.data.forecast.forecastday)
                     setForecastHour(res.data.forecast.forecastday[0].hour)
+                    setDate(res.data.current.last_updated.toString().substring(0,10))
                     setSpecifics ({
                     Wind:{
                         icon: "Wind",
@@ -61,38 +76,47 @@ function Main(){
                         value: weatherDetails.vis_miles + " miles",
                         name: "Visibility"}}
                     )
+                    setIsLoading(false);
                 }).catch(err => {
                     console.log(err)
                 })
                
         }
         useEffect(() => {
-            setIsLoading(true);
             if(!initialized.current){
                 initialized.current = true;
-                
                 getRequest();
-                setIsLoading()     
             }
-            setIsLoading(false);
-            // console.log(data.data.location)
+            
 
-        },[data, forecast, specifics])
+        },[isLoading])
     
     if(isLoading){
         return "Loading...";
     }
-    else{
+    if(!isLoading && window.innerWidth < 600){
           return(
-        <div>
-            <Location location={location}/>
-            <Day condition={condition}/>
-            <Temp prop={temp}/>
-            {/* <DailySummary/> */}
-            <WeatherSpecifics prop={specifics} forecast={forecast} forecastHour={forecastHour}/> 
-        </div>
-    )  
+            <div>
+                <Location location={location}/>
+                <Day condition={condition}/>
+                <Temp prop={temp}/>
+                {/* <DailySummary/> */}
+                <WeatherSpecifics prop={specifics} forecast={forecast} forecastHour={forecastHour}/> 
+            </div>
+        ) 
     }
+    if(!isLoading && window.innerWidth > 500){
+        return(
+            <div>
+                     <Date date={date} />
+
+                    {forecastHour && <Hourly location={location} forecastHour={forecastHour} current={current}/>}
+
+                    <Chart forecast={forecast}/>
+                    <Forecast forecast={forecast}/>
+            </div>
+        )
+    } 
 
 }
 

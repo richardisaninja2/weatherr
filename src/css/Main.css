@@ -1,19 +1,21 @@
-
-body{
-    background: #FFE142;
-    color: black;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-bottom: 10%
-}
-.location{
-    margin-top: 30%;
-    text-align: center;
-}
-.day{
-    text-align: center;
-    color: black;
-}
-.dailySummary{
-    margin-bottom: 10%;
+@media only screen and (max-width: 500px){
+    body{
+        overflow-x: hidden;
+        background: #FFE142;
+        color: black;
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-bottom: 10%
+    }
+    .location{
+        margin-top: 30%;
+        text-align: center;
+    }
+    .day{
+        text-align: center;
+        color: black;
+    }
+    .dailySummary{
+        margin-bottom: 10%;
+    }
 }
