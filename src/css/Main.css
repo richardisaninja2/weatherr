@@ -19,3 +19,28 @@
         margin-bottom: 10%;
     }
 }
+
+.beside{
+    display: flex;
+    align-items: flex-start;
+}
+body{
+    background: #1e1f24;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 20px;
+  }
+  .besideTop{
+        display: flex;
+        align-items: flex-start;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+  }

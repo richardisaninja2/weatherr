@@ -15,9 +15,13 @@ import WeatherSpecifics from "./WeatherSpecifics";
 
 import '../css/Main.css';
 import axios from "axios";
+import Search from "./desktop/Search";
+import Recents from "./desktop/Recents";
 
 
 function Main(){
+    const [searchValue,setSearchValue] = useState();
+    const [key,setKey] = useState(false);
     const[isLoading,setIsLoading] = useState(true);
     const[location, setLocation] = useState();
     const [data, setData] = useState(false);
@@ -31,25 +35,53 @@ function Main(){
     const[current, setCurrent] = useState();
 
 
-    const [longitude, setLongitude] = useState("")
-    const [latitude, setLatitude] = useState("")
+    const [latLong, setLatLong] = useState(false)
+    const [latitude, setLatitude] = useState(false)
 
     // const successCallback = (position) => {
-    //     console.log( "latitude " +position.coords.latitude)
-    //     setLatitude(position.coords.latitude);
-    //     setLongitude(position.coords.longitude)  
+    //     // console.log( "latitude " +position.coords.latitude)
+    //     setLatitude(position.coords.latitude.toString());
+    //     setLongitude(position.coords.longitude.toString());  
     // }
-    // //fires off function to get lat and longitude
+    // fires off function to get lat and longitude
     // navigator.geolocation.getCurrentPosition(successCallback);
 
 
-
-
-
-
-        const getRequest = async ()=> {
+    window.navigator.geolocation.getCurrentPosition(
+        position => {
+          const location = {
+            lat:position.coords.latitude,
+            long:position.coords.longitude
             
-            await axios.get("http://api.weatherapi.com/v1/forecast.json?key=84487a92cee24d95bff41045232309 &q=33.1334561,-96.6466561&days=10&aqi=no&alerts=no").then(res => {
+          }
+          showLocation(location); // <- Function that will use location data
+        },
+        (err)=>console.log(err),
+      
+      );
+
+      function showLocation(location) {
+        
+        setLatLong(location.lat.toString()+","+location.long.toString());
+        // setLongitude(location.long.toString());
+        setKey("84487a92cee24d95bff41045232309");  
+
+    }
+
+
+     //lifted up state from child component Search
+        const getData = (searchValue) => {
+            setSearchValue(searchValue);
+            console.log(searchValue);
+         }
+
+
+
+
+
+        const getRequest = async (key, lat)=> {
+            
+            await axios.get("http://api.weatherapi.com/v1/forecast.json?key="+key+"&q="+lat+"&days=10&aqi=no&alerts=no").then(res => {
                     
                     setIsLoading(false);
                     const weatherDetails = res.data.current;
@@ -83,13 +115,23 @@ function Main(){
                
         }
         useEffect(() => {
-            if(!initialized.current){
-                initialized.current = true;
-                getRequest();
+            if(!latitude && !key){
+            }else{
+                if(!searchValue){
+                    initialized.current = true;
+                    getRequest(key, latLong);
+                }else{
+                    getRequest(key, searchValue)
+                }
+                
             }
+            // console.log("http://api.weatherapi.com/v1/forecast.json?key="+key+" &q="+latLong+"&days=10&aqi=no&alerts=no")
+            // console.log(latitude)
             
+           
+        },[isLoading, latitude, key, searchValue])
 
-        },[isLoading])
+
     
     if(isLoading){
         return "Loading...";
@@ -108,12 +150,19 @@ function Main(){
     if(!isLoading && window.innerWidth > 500){
         return(
             <div>
-                     <Date date={date} />
-
+                <Search onSubmit={getData}/>
+                <Date date={date} />
+                    
+                <div className="besideTop">
+                    
                     {forecastHour && <Hourly location={location} forecastHour={forecastHour} current={current}/>}
-
-                    <Chart forecast={forecast}/>
-                    <Forecast forecast={forecast}/>
+                    <Recents/>
+                </div>
+                
+                <div className="beside">
+                        <Chart forecast={forecast}/>
+                        <Forecast forecast={forecast}/>
+                </div>
             </div>
         )
     } 
