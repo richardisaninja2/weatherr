@@ -20,6 +20,10 @@
     }
 }
 
+.mainDesk{
+    display: flex;
+}
+
 .beside{
     display: flex;
     align-items: flex-start;

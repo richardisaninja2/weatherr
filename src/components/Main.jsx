@@ -149,20 +149,25 @@ function Main(){
     }
     if(!isLoading && window.innerWidth > 500){
         return(
-            <div>
-                <Search onSubmit={getData}/>
-                <Date date={date} />
+            <div className="mainDesk">
+                <div className="left">
+                    <Search onSubmit={getData}/>
+                    <Forecast forecast={forecast}/>
+
+                </div>
+                <div className="right">
                     
-                <div className="besideTop">
-                    
+               
                     {forecastHour && <Hourly location={location} forecastHour={forecastHour} current={current}/>}
-                    <Recents/>
-                </div>
+                    {/* <Recents/> */}
                 
-                <div className="beside">
-                        <Chart forecast={forecast}/>
-                        <Forecast forecast={forecast}/>
+                
+                    <div className="beside">
+                            <Chart forecast={forecast}/>
+                            
+                    </div>
                 </div>
+             
             </div>
         )
     } 
