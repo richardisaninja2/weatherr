@@ -1,0 +1,19 @@
+.search{
+    margin: auto;
+    display: flex;
+    padding-top: 10%;
+    justify-content: space-around;
+    position: relative;
+    z-index: 1;
+    
+}
+
+input[type=submit]{
+    display:none;
+}
+input[type=text]{
+    padding-left: 10%;
+    height: 4vh;
+    border-radius: 20px;
+    border: 1px solid black;;
+}
