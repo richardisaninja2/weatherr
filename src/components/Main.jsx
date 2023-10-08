@@ -64,7 +64,7 @@ function Main(){
         
         setLatLong(location.lat.toString()+","+location.long.toString());
         // setLongitude(location.long.toString());
-        setKey("84487a92cee24d95bff41045232309");  
+        setKey("49d8b7a694c44c7b90250319230810");  
 
     }
 
@@ -82,7 +82,7 @@ function Main(){
         const getRequest = async (key, lat)=> {
             
             await axios.get("http://api.weatherapi.com/v1/forecast.json?key="+key+"&q="+lat+"&days=10&aqi=no&alerts=no").then(res => {
-                    
+                    console.log(res)
                     setIsLoading(false);
                     const weatherDetails = res.data.current;
                     setCurrent(res.data.current);
@@ -164,7 +164,7 @@ function Main(){
                 
                     <div className="beside">
                             <Chart forecast={forecast}/>
-                            
+                            {/* {console.log(forecast)} */}
                     </div>
                 </div>
              

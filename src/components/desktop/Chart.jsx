@@ -25,16 +25,16 @@ function Chart(props){
     const[tempObj, setTempObj] = useState([]);
     const[name, setName] = useState("maxtemp_f");
     const[title, setTitle] = useState();
-    function getX(){
-        for(let days in Object.keys(forecast)){
-            for(let key in forecast[days]){
-                console.log("the dates" + forecast[days][key])
-            }
-        }
-    }
+    // function getX(){
+    //     for(let days in Object.keys(forecast)){
+    //         for(let key in forecast[days]){
+    //             console.log("the dates" + forecast[days][key])
+    //         }
+    //     }
+    // }
 
     function popArrays(a,b){
-        for(var i = 0; i<10; i++){
+        for(var i = 0; i<forecast.length; i++){
             a[i] = forecast[i].date.toString().substring(5,10);
             if(name == "avghumidity"){
                 b[i] = forecast[i].day.avghumidity
@@ -56,7 +56,7 @@ function Chart(props){
     useEffect(() => {
 
         setForecast(props.forecast);
-        // getX();
+        // // getX();
 
         if(forecast != undefined){
             popArrays(dateObj, tempObj);

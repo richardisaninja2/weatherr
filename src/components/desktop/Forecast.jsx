@@ -49,7 +49,7 @@ function Forecast(props){
         // )
         return(
             <div className="forecastSide">
-                {console.log(forecast[0].day)}
+                {/* {console.log(forecast[0].day)} */}
                 <img className="mobSvg1" src={require('../../icons/'+forecast[0].day.condition.text+'.svg')}/>
                 <div className="marginNeg">
                     <p className="temp left10">{forecast[0].day.maxtemp_f}/{forecast[0].day.mintemp_f}</p>
