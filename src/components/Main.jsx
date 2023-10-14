@@ -81,7 +81,7 @@ function Main(){
 
         const getRequest = async (key, lat)=> {
             
-            await axios.get("http://api.weatherapi.com/v1/forecast.json?key="+key+"&q="+lat+"&days=10&aqi=no&alerts=no").then(res => {
+            await axios.get("https://api.weatherapi.com/v1/forecast.json?key="+key+"&q="+lat+"&days=10&aqi=no&alerts=no").then(res => {
                     console.log(res)
                     setIsLoading(false);
                     const weatherDetails = res.data.current;
