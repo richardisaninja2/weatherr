@@ -55,14 +55,15 @@ function WeatherSpecifics(props){
 
                     {/* section for daily */}
             <div className="forecast">
-                <h1>5 Day Forecast</h1>
+                <h1>{Object.keys(forecast).length} Day Forecast</h1>
                 {forecast && Object.keys(forecast).map((item, i) => (
-                    <div key={i}>
+                    <div key={i} className="forecastP">
                         <p>{forecast[item].date}</p>
                         
                         <img className="mobileSvg" src={require('../icons/'+forecast[item].day.condition.text+'.svg')}/>
                         {/* get ride of the decimal spaces in the temp in future */}
-                        <p>{forecast[item].day.maxtemp_f.toString().substring(0, 2)}</p> -----
+                        <p>{forecast[item].day.maxtemp_f.toString().substring(0, 2)}</p> 
+                        <p>/</p>
                         <p>{forecast[item].day.mintemp_f.toString().substring(0, 2)}</p>
                         <p>{forecast[item].day.condition.text}</p>
                     </div>

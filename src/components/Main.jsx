@@ -136,9 +136,10 @@ function Main(){
     if(isLoading){
         return "Loading...";
     }
-    if(!isLoading && window.innerWidth < 600){
+    if(!isLoading && window.innerWidth < 500){
           return(
             <div>
+                <Search onSubmit={getData}/>
                 <Location location={location}/>
                 <Day condition={condition}/>
                 <Temp prop={temp}/>

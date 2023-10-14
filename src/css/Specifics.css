@@ -62,6 +62,9 @@
         margin-left: 1.3vw;
         margin-right: 1.3vw;
     }
+    .forecastP{
+        display: flex;
+    }
     .forecast img{
         vertical-align: middle;
         margin: auto;

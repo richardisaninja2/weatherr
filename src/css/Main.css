@@ -1,14 +1,15 @@
 @media only screen and (max-width: 500px){
     body{
+        width: 98%;
         overflow-x: hidden;
         background: #FFE142;
         color: black;
-        margin-left: 10%;
+        margin-left: 1%;
         margin-right: 10%;
         margin-bottom: 10%
     }
     .location{
-        margin-top: 30%;
+        
         text-align: center;
     }
     .day{
@@ -20,6 +21,8 @@
     }
 }
 
+
+@media only screen and (min-width: 501px){
 .mainDesk{
     display: flex;
 }
@@ -48,3 +51,4 @@ body{
         justify-content: space-between;
         align-items: center;
   }
+}
