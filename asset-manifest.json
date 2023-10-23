@@ -1,22 +1,27 @@
 {
   "files": {
-    "main.css": "/weatherr/static/css/main.8c3c2561.css",
-    "main.js": "/weatherr/static/js/main.1be7d69d.js",
+    "main.css": "/weatherr/static/css/main.b0d469be.css",
+    "main.js": "/weatherr/static/js/main.cfe281b2.js",
     "static/js/787.5a0eed9c.chunk.js": "/weatherr/static/js/787.5a0eed9c.chunk.js",
     "static/media/Visibility.svg": "/weatherr/static/media/Visibility.a1a07bc22b36ea0271da.svg",
     "static/media/logo.svg": "/weatherr/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "static/media/windGust.svg": "/weatherr/static/media/windGust.d60a3a0169cb43b14fd9ae742692fe18.svg",
     "static/media/Overcastm.svg": "/weatherr/static/media/Overcastm.580f25bb1e8a6e9ede74.svg",
     "static/media/Heavy rain.svg": "/weatherr/static/media/Heavy rain.e3975e06c02ae2b1aa5e.svg",
     "static/media/Light rain.svg": "/weatherr/static/media/Light rain.e3975e06c02ae2b1aa5e.svg",
     "static/media/Light rainm (2).svg": "/weatherr/static/media/Light rainm (2).e3975e06c02ae2b1aa5e.svg",
+    "static/media/Moderate or heavy rain showerm.svg": "/weatherr/static/media/Moderate or heavy rain showerm.e3975e06c02ae2b1aa5e.svg",
     "static/media/Moderate rain.svg": "/weatherr/static/media/Moderate rain.e3975e06c02ae2b1aa5e.svg",
     "static/media/Patch rain possiblem.svg": "/weatherr/static/media/Patch rain possiblem.e3975e06c02ae2b1aa5e.svg",
     "static/media/Patchy rain possible.svg": "/weatherr/static/media/Patchy rain possible.e3975e06c02ae2b1aa5e.svg",
     "static/media/Patchy rain possiblem.svg": "/weatherr/static/media/Patchy rain possiblem.e3975e06c02ae2b1aa5e.svg",
+    "static/media/rain - Copy.svg": "/weatherr/static/media/rain - Copy.e3975e06c02ae2b1aa5e.svg",
     "static/media/rain.svg": "/weatherr/static/media/rain.e3975e06c02ae2b1aa5eefba3941d774.svg",
     "static/media/rainm.svg": "/weatherr/static/media/rainm.e3975e06c02ae2b1aa5e.svg",
     "static/media/Overcast.svg": "/weatherr/static/media/Overcast.eaa5b72cf88d2459ab142ae79254d990.svg",
-    "static/media/Cloudy.svg": "/weatherr/static/media/Cloudy.48f312ada72215b72ddf.svg",
+    "static/media/feelsLike.svg": "/weatherr/static/media/feelsLike.0992996a24171d0bf9fd986762e0f972.svg",
+    "static/media/uv-index.svg": "/weatherr/static/media/uv-index.b0d925d0e553a339a26220a1985b6efc.svg",
+    "static/media/Cloudy.svg": "/weatherr/static/media/Cloudy.48f312ada72215b72ddfe2fa6f5160bd.svg",
     "static/media/Partly cloudy.svg": "/weatherr/static/media/Partly cloudy.48f312ada72215b72ddf.svg",
     "static/media/Humidity.svg": "/weatherr/static/media/Humidity.43c4ac708e11cbd8f4c4708433f34d7a.svg",
     "static/media/Fog.svg": "/weatherr/static/media/Fog.6f98284d4521e4bdfa89.svg",
@@ -35,12 +40,12 @@
     "static/media/Partly cloudym.svg": "/weatherr/static/media/Partly cloudym.8856f27a3055420aecba.svg",
     "static/media/Mist.svg": "/weatherr/static/media/Mist.955d448bb5fb1470bebb.svg",
     "static/media/Mistm.svg": "/weatherr/static/media/Mistm.955d448bb5fb1470bebb.svg",
-    "main.8c3c2561.css.map": "/weatherr/static/css/main.8c3c2561.css.map",
-    "main.1be7d69d.js.map": "/weatherr/static/js/main.1be7d69d.js.map",
+    "main.b0d469be.css.map": "/weatherr/static/css/main.b0d469be.css.map",
+    "main.cfe281b2.js.map": "/weatherr/static/js/main.cfe281b2.js.map",
     "787.5a0eed9c.chunk.js.map": "/weatherr/static/js/787.5a0eed9c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8c3c2561.css",
-    "static/js/main.1be7d69d.js"
+    "static/css/main.b0d469be.css",
+    "static/js/main.cfe281b2.js"
   ]
 }
