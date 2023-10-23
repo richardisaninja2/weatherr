@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "../../css/desktop/Hourly.css"
 import "../../icons/Clear.svg"
+import { HashRouter, Link, NavLink, Route, Routes, useParams } from "react-router-dom";
+import HourlyDetails from "./HourlyDetails";
+import Main from "../Main";
 
 function Hourly(props){
     const[isLoading,setIsLoading] = useState(true)
@@ -9,7 +12,14 @@ function Hourly(props){
     const[current,setCurrent] = useState();
     const[condition, setCondition] = useState();
     const[hourlyForecast, setHourlyForecast] = useState();
+    const[hour,setHour] = useState();
 
+    const Hour = () => {
+        const { i } = useParams();
+        console.log(i)
+      
+      };
+      console.log(hour)
     useEffect(() => {
 
         setCity(props.location.name)
@@ -20,7 +30,7 @@ function Hourly(props){
         setIsLoading(false);
         // console.log(props.forecastHour)
 
-    }, [props])
+    }, [props, hour])
 
     if(isLoading){
         return(<p>...loading</p>)
@@ -29,13 +39,13 @@ function Hourly(props){
             <div>
                 <div className="hourly">
                     <div className="hSingle">
-                        <img className="mobileSvg" src={require('../../icons/'+condition+'.svg')}/>
+                        <img className="mobileSvg" alt={condition} src={require('../../icons/'+condition+'.svg')}/>
                         <div className="headings">
                             <p>{city}</p>
                             <p>{region}</p>
                         </div>
                         <div  className="headings">
-                            <p>{current.temp_f}&#176;F</p>
+                            <p>{Math.round(current.temp_f)}&#176;F</p>
                             <p>Temperature</p>
                         </div>
                         <div className="headings">
@@ -49,15 +59,28 @@ function Hourly(props){
                     </div>
     
                     
+                        
                     <div className="hDiv">
-                        { Object.keys(hourlyForecast).slice(0,24).map((item, i) => (
-                            <div className="hInside" key={i}>
-                                <p>{hourlyForecast[item].time.substring(10, 16)}</p>
-                                <img className="mobileSvg" src={require('../../icons/'+hourlyForecast[item].condition.text+'m.svg')}/>
-                                <p>{hourlyForecast[item].temp_f}</p>
-                            </div>
+                       
+                        { Object.keys(hourlyForecast).slice(0, hourlyForecast.length).map((item, i) => (
+                            <NavLink to={'hour/' + i} key={i} onClick={() => setHour(i)}>
+                                <div className="hInside" key={i}>
+                                    {/* {console.log(hourlyForecast[i])} */}
+                                    <p>{hourlyForecast[item].time.substring(10, 16)}</p>
+                                    <img className="mobileSvg" alt={condition} src={require('../../icons/'+hourlyForecast[item].condition.text+'m.svg')}/>
+                                    <p>{Math.round(hourlyForecast[item].temp_f)}&deg;F</p>
+                                </div>
+                            </NavLink>
+                            
+                            
                         ))}
+
+                        <Routes>
+                            <Route path="/hour/:id" element={<HourlyDetails hour={hourlyForecast[hour]}/>}/>
+                        </Routes>
+                    
                     </div>
+
                 </div>
                     
             </div>

@@ -35,6 +35,7 @@ body{
 .hDiv{
     margin-top: 3%;
     margin-bottom: 3%;
+    margin-left: 2%;
     padding-bottom: 2%;
     padding-left: 2%;
     padding-right: 2%;
@@ -45,21 +46,28 @@ body{
     text-align: center;
     
 }
+.hourly a{
+    margin-left: 1%;
+}
 .hInside{
     flex-direction: column;
     font-weight: bold;
     background: #c8eaeb;
     color: #35353f;
-    border-radius: 15px;
-    margin: .5%;
+    border-radius: 20px;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 4vw;
 }
-.hInside{
-    font-size: .5em;
-
+.hInside{  
+    font-size: 1em;
     min-width: 5%;
 }
 .hInside img{
-    height: 20px;
-    width: 20px;
+    height: 40px;
+    width: 40px;
 
+}
+a, button{
+    all: unset;
 }

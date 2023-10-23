@@ -17,6 +17,7 @@ import '../css/Main.css';
 import axios from "axios";
 import Search from "./desktop/Search";
 import Recents from "./desktop/Recents";
+import { HashRouter } from "react-router-dom";
 
 
 function Main(){
@@ -151,23 +152,25 @@ function Main(){
     if(!isLoading && window.innerWidth > 500){
         return(
             <div className="mainDesk">
-                <div className="left">
-                    <Search onSubmit={getData}/>
-                    <Forecast forecast={forecast}/>
+                <HashRouter> 
+                    <div className="left">
+                        <Search onSubmit={getData}/>
+                        <Forecast forecast={forecast}/>
 
-                </div>
-                <div className="right">
-                    
-               
-                    {forecastHour && <Hourly location={location} forecastHour={forecastHour} current={current}/>}
-                    {/* <Recents/> */}
-                
-                
-                    <div className="beside">
-                            <Chart forecast={forecast}/>
-                            {/* {console.log(forecast)} */}
                     </div>
-                </div>
+                    <div className="right">
+                        
+                
+                        {forecastHour && <Hourly location={location} forecastHour={forecastHour} current={current}/>}
+                        {/* <Recents/> */}
+                    
+                    
+                        <div className="beside">
+                                <Chart forecast={forecast}/>
+                                {/* {console.log(forecast)} */}
+                        </div>
+                    </div>
+                </HashRouter>
              
             </div>
         )

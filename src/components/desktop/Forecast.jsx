@@ -52,7 +52,7 @@ function Forecast(props){
                 {/* {console.log(forecast[0].day)} */}
                 <img className="mobSvg1" src={require('../../icons/'+forecast[0].day.condition.text+'.svg')}/>
                 <div className="marginNeg">
-                    <p className="temp left10">{forecast[0].day.maxtemp_f}/{forecast[0].day.mintemp_f}</p>
+                    <p className="temp left10">{Math.round(forecast[0].day.maxtemp_f)}&deg;F/{Math.round(forecast[0].day.mintemp_f)}&deg;F</p>
                     <p className="left10">{forecast[0].date}</p>
                     <div className="innerDiv">
                         <img className="mobSvg2 left10" src={require('../../icons/'+forecast[0].day.condition.text+'.svg')}/>

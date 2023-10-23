@@ -1,0 +1,66 @@
+h1{
+    color: black;;
+}
+.svg{
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    
+}
+.hDetails{
+    margin-left: 18%;
+    width: 14%;
+
+    background: white;
+    position: absolute;
+    border-radius: 15px;
+    color: black;
+    
+    
+}
+span p:last-child{
+    float: right;
+}
+.hDetailsInside{
+
+}
+.middle{
+    display: flex;
+    justify-content: center;
+}
+.middle h1{
+    font-weight: normal;
+    font-size: 2.5em;
+}
+.underMiddle{
+    margin-top: -3%;
+    padding-top: 0;
+}
+.hDetailsInside span{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+} 
+.hDetailsInside span p:nth-child(2){
+    margin-right: 10%;
+}
+span p{
+    padding: 0;
+    margin-top: 0;
+}
+.hDetailsInside span p:nth-child(1){
+    margin-left: 5%;
+}
+.close{
+    margin-top: 1%;
+    height: 5vh;
+    background: orange;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 10%;
+    border-radius: 15px;
+    line-height: 5vh;
+}
+.close:hover{
+    color: white;
+}
