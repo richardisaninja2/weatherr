@@ -14,6 +14,18 @@ function Hourly(props){
     const[hourlyForecast, setHourlyForecast] = useState();
     const[hour,setHour] = useState();
 
+        function imageChooser(e){
+        if(e.includes("rain")){
+            return "rain.svg";
+        }
+        if(e.includes("Cloud")){
+           return "Overcast.svg"
+        }
+        else{
+            return e.trim()+".svg";
+        }
+    }
+
     const Hour = () => {
         const { i } = useParams();
         console.log(i)
@@ -39,7 +51,8 @@ function Hourly(props){
             <div>
                 <div className="hourly">
                     <div className="hSingle">
-                        <img className="mobileSvg" alt={condition} src={require('../../icons/'+condition+'.svg')}/>
+                    <img className="mobileSvg" src={require('../../icons/'+imageChooser(condition))}/>
+                        {/* <img className="mobileSvg" alt={condition} src={require('../../icons/'+condition+'.svg')}/> */}
                         <div className="headings">
                             <p>{city}</p>
                             <p>{region}</p>
@@ -67,7 +80,8 @@ function Hourly(props){
                                 <div className="hInside" key={i}>
                                     {/* {console.log(hourlyForecast[i])} */}
                                     <p>{hourlyForecast[item].time.substring(10, 16)}</p>
-                                    <img className="mobileSvg" alt={condition} src={require('../../icons/'+hourlyForecast[item].condition.text+'m.svg')}/>
+                                    <img className="mobileSvg" src={require('../../icons/'+imageChooser(condition))}/>
+                                    {/* <img className="mobileSvg" alt={condition} src={require('../../icons/'+hourlyForecast[item].condition.text+'m.svg')}/> */}
                                     <p>{Math.round(hourlyForecast[item].temp_f)}&deg;F</p>
                                 </div>
                             </NavLink>

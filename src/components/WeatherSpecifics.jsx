@@ -1,3 +1,4 @@
+//mobile page
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import "../css/Specifics.css";
@@ -21,6 +22,9 @@ function WeatherSpecifics(props){
         if(e.includes("rain")){
             setImage("rain.svg");
         }
+        if(e.includes("Cloud")){
+            setImage("Overcast.svg");
+        }
         else{
             setImage(e+".svg")
         }
@@ -32,7 +36,7 @@ function WeatherSpecifics(props){
                 {Object.keys(specifics).map((item, i) =>(
                     <div className="specifics" key={i}>
 
-                        <img className="mobileSvg" src={require('../icons/'+specifics[item].icon+'.svg')}/>
+                        <img className="mobileSvg" src={require('../icons/'+specifics[item].icon.trim()+'.svg')}/>
                         <p >{specifics[item].value}</p>
                         <p >{specifics[item].name}</p>
                     </div>
@@ -46,7 +50,7 @@ function WeatherSpecifics(props){
                     <div key={i}>
                         <p>{forecastHour[item].time.substring(10, 16)}</p>
                         
-                        <img className="mobileSvg" src={require('../icons/'+forecastHour[item].condition.text+'.svg')}/>
+                        <img className="mobileSvg" src={require('../icons/'+forecastHour[item].condition.text.trim()+'.svg')}/>
                         <p>{forecastHour[item].temp_f}</p>
                     </div>
                 ))}
@@ -60,7 +64,7 @@ function WeatherSpecifics(props){
                     <div key={i} className="forecastP">
                         <p>{forecast[item].date}</p>
                         
-                        <img className="mobileSvg" src={require('../icons/'+forecast[item].day.condition.text+'.svg')}/>
+                        <img className="mobileSvg" src={require('../icons/'+forecast[item].day.condition.text.trim()+'.svg')}/>
                         {/* get ride of the decimal spaces in the temp in future */}
                         <p>{forecast[item].day.maxtemp_f.toString().substring(0, 2)}</p> 
                         <p>/</p>
